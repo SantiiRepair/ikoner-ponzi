@@ -21,7 +21,7 @@ export const Withdraw = async (req, res) => {
     const privateKey = process.env.TRON_PRIVATE_KEY;
     const AppKey = "Tron Grid API Key - Optional";
     const CONTRACT = process.env.CONTRACT;
-    const network = "shasta";
+    const network = "mainnet";
     const minimun = 2;
     const required = 1;
     let url = null 
