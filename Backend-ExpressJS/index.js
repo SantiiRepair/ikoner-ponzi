@@ -28,4 +28,4 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(router);
 
-// app.listen(5000, ()=> load.succeed('Server running at port 5000'));
+app.listen(5000, ()=> load.succeed('Server running at port 5000'));
