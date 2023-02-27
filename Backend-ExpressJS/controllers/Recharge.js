@@ -23,7 +23,7 @@ export const Recharge = async (req, res) => {
    const receiver = process.env.RECEIVER;
    const network = "shasta";
    let url = null 
-    if (network === "shasta") {
+    if (network === "mainnet") {
       url = "https://api.shasta.trongrid.io";
     } else if (network === "nile") {
       url = "https://nile.trongrid.io";
