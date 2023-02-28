@@ -1,10 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "index.js",
+  "main": "",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon"
   },
   "author": "",
   "license": "ISC",
