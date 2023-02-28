@@ -5,8 +5,7 @@
   "main": "",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
