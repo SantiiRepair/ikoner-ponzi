@@ -28,4 +28,5 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(router);
 
-app.listen(8080, ()=> load.succeed('Server running at port 8080'));
+app.listen(process.env.PORT || 3000);
+// load.succeed('Server running at port 8080'));
