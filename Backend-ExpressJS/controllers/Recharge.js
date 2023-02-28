@@ -21,9 +21,9 @@ export const Recharge = async (req, res) => {
    const minimun = 6;
    const amountAll = req.body.amount * 1000000;
    const receiver = process.env.RECEIVER;
-   const network = "shasta";
+   const network = "mainnet";
    let url = null 
-    if (network === "mainnet") {
+    if (network === "shasta") {
       url = "https://api.shasta.trongrid.io";
     } else if (network === "nile") {
       url = "https://nile.trongrid.io";
