@@ -1,4 +1,4 @@
-import Users from "../models/UserModel.js";
+import users from "../models/userModel.js";
 import ora from "ora";
 
 export const Team = async (req, res) => {
@@ -8,7 +8,7 @@ export const Team = async (req, res) => {
       hideCursor: true,
     }).start();
     const { userId, user_code, ref_code } = req.body;
-    const users = await Users.findAll({
+    const users = await users.findAll({
       where: {
         ref_code: user_code,
       },

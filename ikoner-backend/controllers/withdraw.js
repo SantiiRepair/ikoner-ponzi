@@ -1,7 +1,7 @@
 import TronWeb from "tronweb";
 import ora from "ora";
-import Users from "../models/UserModel.js";
-import Widraw from "../models/WithdrawalModel.js";
+import users from "../models/userModel.js";
+import Widraw from "../models/withdrawalModel.js";
 
 // Withdrawawls -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ export const Withdraw = async (req, res) => {
       });
       console.log("Saving Transaction...");
       const updateBalance = await (balance - parseInt(amount));
-      await Users.update(
+      await users.update(
         { balance: updateBalance },
         {
           where: {

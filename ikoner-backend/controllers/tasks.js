@@ -1,5 +1,5 @@
-import Users from "../models/UserModel.js";
-import Tasks from "../models/TasksModel.js";
+import users from "../models/userModel.js";
+import Tasks from "../models/tasksModel.js";
 import ora from "ora";
 
 export const Task = async (req, res) => {
@@ -28,7 +28,7 @@ export const Task = async (req, res) => {
     });
     const updateBalance = await (balance + amountTask);
     const updateDaily = await (daily + tryToday);
-    await Users.update(
+    await users.update(
       {
         balance: updateBalance,
         daily: updateDaily,

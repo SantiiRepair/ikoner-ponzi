@@ -1,7 +1,7 @@
 import TronWeb from "tronweb";
 import ora from "ora";
-import Users from "../models/UserModel.js";
-import Rechge from "../models/RechargeModel.js";
+import users from "../models/userModel.js";
+import Rechge from "../models/rechargeModel.js";
 
 // Recharges -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ export const Recharge = async (req, res) => {
       load.succeed("Has been checked!");
 
       const updateBalance = await (balance + parseInt(amount));
-      await Users.update(
+      await users.update(
         {
           balance: updateBalance,
         },

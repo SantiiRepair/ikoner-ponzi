@@ -1,7 +1,7 @@
-import Users from "../models/UserModel.js";
-import Widraw from "../models/WithdrawalModel.js";
-import Rechge from "../models/RechargeModel.js";
-import Tasks from "../models/TasksModel.js";
+import users from "../models/userModel.js";
+import Widraw from "../models/withdrawalModel.js";
+import Rechge from "../models/rechargeModel.js";
+import Tasks from "../models/tasksModel.js";
 import ora from "ora";
 
 // Withdrawals History ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,21 +1,24 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import db from "../config/database.js";
 
 const { DataTypes } = Sequelize;
 
-const Rechge = db.define(
-  "recharges",
+const Widraw = db.define(
+  "withdrawals",
   {
     username: {
       type: DataTypes.STRING,
     },
-    hash: {
+    to: {
       type: DataTypes.STRING,
     },
     amount: {
       type: DataTypes.STRING,
     },
     status: {
+      type: DataTypes.STRING,
+    },
+    updatedAt: {
       type: DataTypes.toString(),
     },
   },
@@ -24,4 +27,4 @@ const Rechge = db.define(
   },
 );
 
-export default Rechge;
+export default Widraw;

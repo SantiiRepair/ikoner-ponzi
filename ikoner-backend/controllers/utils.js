@@ -1,10 +1,10 @@
-import Users from "../models/UserModel.js";
+import users from "../models/userModel.js";
 
-export const SetAddress = async (req, res) => {
+export const setAddress = async (req, res) => {
   const { userId, address } = req.body;
 
   try {
-    const verifyAddress = await Users.findOne({
+    const verifyAddress = await users.findOne({
       where: { address: req.body.address },
     });
     if (verifyAddress) {
@@ -13,7 +13,7 @@ export const SetAddress = async (req, res) => {
     if (address === "") {
       return res.status(400).json({ msg: "Type An Valid Address" });
     } else {
-      await Users.update(
+      await users.update(
         {
           address: address,
         },

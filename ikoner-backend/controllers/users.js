@@ -1,23 +1,24 @@
-import Users from "../models/UserModel.js";
-import referralCodes from "referral-codes";
+import ora from "ora";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import ora from "ora";
+import referralCodes from "referral-codes";
 
-export const Register = async (req, res) => {
+import users from "../models/userModel.js";
+
+export const register = async (req, res) => {
   const load = ora({
     color: "green",
     hideCursor: true,
   }).start();
   const { password, confPassword } = req.body;
   const balance = 9;
-  const verifyUsername = await Users.findOne({
+  const verifyUsername = await users.findOne({
     where: { username: req.body.username },
   });
   if (verifyUsername) {
     res.status(400).json({ msg: "Username Already Registered" });
   } else {
-    const verifyEmail = await Users.findOne({
+    const verifyEmail = await users.findOne({
       where: { email: req.body.email },
     });
     if (verifyEmail) {
@@ -29,7 +30,7 @@ export const Register = async (req, res) => {
           .json({ isAlert: "error", msg: "Check Password" });
       const salt = await bcrypt.genSalt();
       const hashPassword = await bcrypt.hash(password, salt);
-      const verifyCode = await Users.findOne({
+      const verifyCode = await users.findOne({
         where: { user_code: req.body.ref_code },
       });
       if (!verifyCode) {
@@ -41,7 +42,7 @@ export const Register = async (req, res) => {
         });
         const user_code = generateCode.toString();
         try {
-          await Users.create({
+          await users.create({
             username: req.body.username,
             email: req.body.email,
             password: hashPassword,
@@ -60,13 +61,9 @@ export const Register = async (req, res) => {
   }
 };
 
-export const Login = async (req, res) => {
+export const login = async (req, res) => {
   try {
-    const load = ora({
-      color: "green",
-      hideCursor: true,
-    }).start();
-    const user = await Users.findAll({
+    const user = await users.findAll({
       where: {
         email: req.body.email,
       },
@@ -91,7 +88,7 @@ export const Login = async (req, res) => {
         expiresIn: "1d",
       },
     );
-    await Users.update(
+    await users.update(
       { refresh_token: refreshToken, ipv4: req.body.ipv4 },
       {
         where: {
@@ -99,7 +96,7 @@ export const Login = async (req, res) => {
         },
       },
     );
-    res.cookie("refreshToken", refreshToken, {
+    res.cookie("rt_se", refreshToken, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -110,17 +107,17 @@ export const Login = async (req, res) => {
   }
 };
 
-export const Logout = async (req, res) => {
+export const logout = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(204);
-  const user = await Users.findAll({
+  const user = await users.findAll({
     where: {
       refresh_token: refreshToken,
     },
   });
   if (!user[0]) return res.sendStatus(204);
   const userId = user[0].id;
-  await Users.update(
+  await users.update(
     { refresh_token: null },
     {
       where: {
@@ -128,6 +125,6 @@ export const Logout = async (req, res) => {
       },
     },
   );
-  res.clearCookie("refreshToken");
+  res.clearCookie("rt_se");
   return res.sendStatus(200);
 };

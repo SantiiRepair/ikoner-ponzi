@@ -1,5 +1,5 @@
 import nodeCron from "node-cron";
-import Users from "../models/UserModel.js";
+import users from "../models/userModel.js";
 import ora from "ora";
 
 const reloadData = async () => {
@@ -9,7 +9,7 @@ const reloadData = async () => {
   }).start();
 
   try {
-    await Users.update(
+    await users.update(
       { daily: null },
       {
         where: {
@@ -18,7 +18,7 @@ const reloadData = async () => {
       },
     );
     load.succeed("Tasks has been restart!");
-    await Users.update(
+    await users.update(
       { vip: null, levelTime: null },
       {
         where: {
@@ -27,7 +27,7 @@ const reloadData = async () => {
       },
     );
     load.succeed("Delete who expire level!");
-    await Users.decrement(
+    await users.decrement(
       { levelTime: 1 },
       {
         where: {

@@ -1,5 +1,5 @@
-import Users from "../models/UserModel.js";
-import Vip from "../models/VipModel.js";
+import users from "../models/userModel.js";
+import Vip from "../models/vipModel.js";
 
 export const levelOne = async (req, res) => {
   const { username, balance, userId, vip } = req.body;
@@ -21,7 +21,7 @@ export const levelOne = async (req, res) => {
     console.log("Updating Balance...");
 
     const updateBalance = await (balance - price);
-    await Users.update(
+    await users.update(
       {
         balance: updateBalance,
         vip: 1,
