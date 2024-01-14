@@ -30,19 +30,19 @@ const Navigate = () => {
     <Menu width={300} right isOpen={false}>
       <div className="align-icon-text">
         <img alt="account" className="navbar-icons" src={Account} width={20} />
-        <a id="account" className="" href="/account">
+        <a id="account" className="" href="/user/account">
           Account Center
         </a>
       </div>
       <div className="align-icon-text">
         <img alt="task" className="navbar-icons" src={Task} width={20} />
-        <a id="task" className="" href="/task">
+        <a id="task" className="" href="/pages/tasks">
           Task Center
         </a>
       </div>
       <div className="align-icon-text">
         <img alt="vip" className="navbar-icons" src={Vip} width={20} />
-        <a id="vip" className="" href="/vip">
+        <a id="vip" className="" href="/pages/vip">
           Level Center
         </a>
       </div>

@@ -19,7 +19,7 @@ import Navbar from "./components/Navbar.js";
 
 export const router = createBrowserRouter([
   {
-    path: "/pages/login",
+    path: "/",
     element: (
       <div>
         <Navigate replace to="/pages/login" />
@@ -119,7 +119,6 @@ export const router = createBrowserRouter([
 
   {
     path: "/user",
-    element: <div></div>,
     children: [
       {
         path: "account",

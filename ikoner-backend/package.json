@@ -1,8 +1,8 @@
 {
-  "name": "backend",
+  "name": "ikoner-backend",
   "version": "1.1.0",
-  "description": "index.js",
-  "main": "",
+  "description": "",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
@@ -10,19 +10,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.5",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.3.2",
-    "node-cron": "^3.0.2",
-    "nodemon": "^2.0.20",
-    "ora": "^6.1.2",
-    "referral-codes": "^2.0.3",
-    "sequelize": "^6.8.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.7.0",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.0.2",
+    "ora": "^8.0.1",
+    "referral-codes": "^3.0.0",
+    "sequelize": "^6.35.2",
     "tronweb": "^4.4.0"
   }
 }

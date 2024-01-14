@@ -6,6 +6,7 @@ import ora from "ora";
 import db from "./config/Database.js";
 import reloadApp from "./controllers/ReloadApp.js";
 import router from "./routes/index.js";
+
 dotenv.config();
 
 const load = ora({
@@ -23,7 +24,7 @@ try {
   console.error(error);
 }
 
-app.use(cors({ credentials: true, origin: "https://vshop.uno" }));
+app.use(cors({ credentials: true, origin: "*" }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
