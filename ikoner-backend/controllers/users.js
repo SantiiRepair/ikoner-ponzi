@@ -1,4 +1,3 @@
-import ora from "ora";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import referralCodes from "referral-codes";
@@ -6,10 +5,6 @@ import referralCodes from "referral-codes";
 import users from "../models/userModel.js";
 
 export const register = async (req, res) => {
-  const load = ora({
-    color: "green",
-    hideCursor: true,
-  }).start();
   const { password, confPassword } = req.body;
   const balance = 9;
   const verifyUsername = await users.findOne({

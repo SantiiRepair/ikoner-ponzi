@@ -1,0 +1,10 @@
+.vscode
+container
+
+.gitignore
+.gitpod.yml
+
+build
+node_modules
+
+LICENSE

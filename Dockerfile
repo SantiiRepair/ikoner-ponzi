@@ -1,11 +1,10 @@
 FROM node:20
 
 # Set the working directory inside the container
-WORKDIR /ikoner
+WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package.json .
-COPY package-lock.json .
+# Copy files to the working directory
+COPY . /app
 
 # Install pnpm globally
 RUN npm install -g pnpm serve nodemon
@@ -14,13 +13,12 @@ RUN npm install -g pnpm serve nodemon
 RUN pnpm install
 
 # Change the working directory to the backend folder and install backend dependencies
-WORKDIR /ikoner/ikoner-backend
-COPY ikoner-backend/package.json .
-COPY ikoner-backend/pnpm-lock.yaml .
+WORKDIR /app/ikoner-backend
+COPY . /app/ikoner-backend
 RUN pnpm install
 
 # Change the working directory back to the root folder
-WORKDIR /ikoner
+WORKDIR /app
 
 # Build the project
 RUN pnpm run build

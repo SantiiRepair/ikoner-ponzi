@@ -1,11 +1,12 @@
-import express from "express";
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
-import cors from "cors";
 import ora from "ora";
-import db from "./config/Database.js";
-import reloadApp from "./controllers/ReloadApp.js";
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import cookieParser from "cookie-parser";
+
 import router from "./routes/index.js";
+import db from "./config/database.js";
+import reloadApp from "./controllers/reloadApp.js";
 
 dotenv.config();
 
