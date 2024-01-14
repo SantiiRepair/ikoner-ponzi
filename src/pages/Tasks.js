@@ -44,7 +44,7 @@ const Tasks = () => {
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate.push("/");
+        navigate("/pages/login");
       }
     }
   };
@@ -87,7 +87,7 @@ const Tasks = () => {
       setJoke(true);
       setMsg(res.data.msg);
       setTimeout(() => {
-        navigate.push("/tasks/record");
+        navigate("/tasks/record");
       }, 2000);
     } catch (error) {
       if (error.response) {

@@ -40,7 +40,7 @@ const ReferralList = () => {
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate.push("/");
+        navigate("/pages/login");
       }
     }
   };

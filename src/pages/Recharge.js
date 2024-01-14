@@ -49,7 +49,7 @@ const Recharge = () => {
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate.push("/");
+        navigate("/pages/login");
       }
     }
   };
@@ -90,7 +90,7 @@ const Recharge = () => {
       setJoke(true);
       setMsg(res.data.msg);
       setTimeout(() => {
-        navigate.push("/recharges/record");
+        navigate("/recharges/record");
       }, 2000);
     } catch (error) {
       if (error.response) {

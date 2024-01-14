@@ -19,7 +19,7 @@ const Unlog =
 const Logout = async () => {
   try {
     await axios.delete("https://ikoner-node.glitch.me/logout");
-    navigate.push("/");
+    navigate("/pages/login");
   } catch (error) {
     console.log(error);
   }
@@ -54,7 +54,7 @@ const Navigate = () => {
       </div>
       <div className="align-icon-text">
         <img alt="logout" className="navbar-icons" src={Unlog} width={20} />
-        <a id="logout" onClick={Logout} className="" href="/">
+        <a id="logout" onClick={Logout} className="" href="/pages/login">
           Logout
         </a>
       </div>

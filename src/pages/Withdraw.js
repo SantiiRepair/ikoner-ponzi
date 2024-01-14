@@ -53,7 +53,7 @@ const Withdraw = () => {
       setBs(strBs);
       if (decoded.address === null) {
         setTimeout(() => {
-          navigate.push("/wallet");
+          navigate("/wallet");
         }, 2000);
         return setWallet(false);
       } else {
@@ -62,7 +62,7 @@ const Withdraw = () => {
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate.push("/");
+        navigate("/pages/login");
       }
     }
   };
@@ -106,7 +106,7 @@ const Withdraw = () => {
       setJoke(true);
       setMsg(res.data.msg);
       setTimeout(() => {
-        navigate.push("/withdraws/record");
+        navigate("/withdraws/record");
       }, 2000);
     } catch (error) {
       if (error.response) {

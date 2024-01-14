@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 const Login = () => {
-  const [joke, setJoke] = useState(false);
+  const navigate = useNavigate();
+
   const [wait, setWait] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ip, setIp] = useState("");
   const [msg, setMsg] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     Page();
@@ -25,19 +27,14 @@ const Login = () => {
         password: password,
         ipv4: ip,
       });
-      setJoke(true);
       setMsg(res.data.msg);
-      setTimeout(() => {
-        navigate.push("/account");
+      setTimeout(async () => {
+        navigate("/user/account");
       }, 2000);
     } catch (error) {
       if (error.response) {
         setWait(false);
-        setJoke(true);
         setMsg(error.response.data.msg);
-        setTimeout(() => {
-          setJoke(false);
-        }, 2000);
       }
     }
   };
@@ -46,10 +43,15 @@ const Login = () => {
     document.title = "Login | Ikoner";
   };
 
-  const getUserIP = async () => {
-    const res = await axios.get("https://ifconfig.io/all.json");
-    setIp(res.data.ip);
-  };
+  function getUserIP() {
+    axios
+      .get("https://ifconfig.io/all.json", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setIp(response.data.ip);
+      });
+  }
 
   return (
     <section className="hero has-background-grey-light is-fullheight is-fullwidth">
@@ -91,7 +93,7 @@ const Login = () => {
                 >
                   <ul className="forget">Forget Password?</ul>
                 </a>
-                {joke && (
+                {msg !== "" && (
                   <div className="message is-danger">
                     <h1 className="has-text-centered">{msg}</h1>
                   </div>

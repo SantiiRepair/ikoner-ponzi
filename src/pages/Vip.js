@@ -42,7 +42,7 @@ const Vip = () => {
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate.push("/");
+        navigate("/pages/login");
       }
     }
   };
@@ -83,7 +83,7 @@ const Vip = () => {
       setJoke(true);
       setMsg(res.data.msg);
       setTimeout(() => {
-        navigate.push("/account");
+        navigate("/account");
       }, 2000);
     } catch (error) {
       if (error.response) {
@@ -106,7 +106,7 @@ const Vip = () => {
         balance: balance,
         userId: userId,
       });
-      navigate.push("/account");
+      navigate("/account");
     } catch (error) {
       if (error.response) {
         setWait(false);
@@ -128,7 +128,7 @@ const Vip = () => {
         balance: balance,
         userId: userId,
       });
-      navigate.push("/account");
+      navigate("/account");
     } catch (error) {
       if (error.response) {
         setWait(false);
