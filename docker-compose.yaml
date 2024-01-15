@@ -1,11 +1,27 @@
 version: "3"
 
 services:
+  frontend:
+    container_name: ikoner-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+  backend:
+    container_name: ikoner-backend
+    build:
+      context: ./ikoner-backend
+      dockerfile: Dockerfile
+    restart: always
   db:
+    container_name: mysql
     image: mysql:latest
     restart: always
-    env_file:
-      - .env
+    environment:
+      - MYSQL_USER=username
+      - MYSQL_PASSWORD=admin1234
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=ikoner
     ports:
       - "3306:3306"
     volumes:

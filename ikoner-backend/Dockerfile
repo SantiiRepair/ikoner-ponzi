@@ -6,14 +6,11 @@ WORKDIR /app
 # Copy files to the working directory
 COPY . /app
 
-# Install pnpm and serve globally
-RUN npm install -g pnpm serve
+# Install pnpm and nodemon globally
+RUN npm install -g pnpm nodemon
 
 # Install dependencies
 RUN pnpm install
 
-# Build the project
-RUN pnpm run build
-
-# Run over node serve
-ENTRYPOINT [ "serve", "-s", "build" ]
+# Run over node 
+ENTRYPOINT [ "node", "index.js" ]
